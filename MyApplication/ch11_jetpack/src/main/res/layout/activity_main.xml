@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<androidx.drawerlayout.widget.DrawerLayout
+    android:fitsSystemWindows="true"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:id="@+id/drawer"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical">
+        <androidx.appcompat.widget.Toolbar
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:id="@+id/toolbar"
+            android:background="?attr/colorPrimary"/>
+        <androidx.viewpager2.widget.ViewPager2
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:id="@+id/viewpager"/>
+    </LinearLayout>
+    <TextView
+        android:fitsSystemWindows="true"
+        android:layout_height="match_parent"
+        android:layout_width="300dp"
+        android:background="#FF0000"
+        android:layout_gravity="start"
+        android:gravity="center_horizontal"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:text="I am Drawer!!"/>
+</androidx.drawerlayout.widget.DrawerLayout>
