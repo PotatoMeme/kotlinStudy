@@ -1,5 +1,6 @@
 package com.potatomeme.kotlinbasic
 
+import android.app.appsearch.BatchResultCallback
 import java.lang.Exception
 import java.lang.Integer.max
 import java.lang.reflect.Type
@@ -165,7 +166,7 @@ fun main() {
 
     // name2 = name!!
     // name 이 null이라 NullPointerException 발생
-   if (name != null) {
+    if (name != null) {
         name2 = name
     }
     name?.let {
@@ -179,12 +180,13 @@ fun main() {
     println(sum2(a = 3, b = 4, c = 5))
 
     // Class
-    println(Person1(name="name",33).age)
+    println(Person1(name = "name", 33).age)
+    println(Person1(name = "name", 33).adult)
 
     // dataClass
-    val kim1 = Person3("kim",30)
-    val kim2 = Person3("kim",30)
-    val lee = Person3("lee",30)
+    val kim1 = Person3("kim", 30)
+    val kim2 = Person3("kim", 30)
+    val lee = Person3("lee", 30)
 
     println(kim1)//Person3(name=kim, age=30)
     println(kim2)//Person3(name=kim, age=30)
@@ -193,25 +195,43 @@ fun main() {
     println(kim1 == kim2)//true
     println(kim1 == lee)//false
 
-}
+    // 타입 체크
+    if (kim1 is Person3) {
+        println("kim1 is Person3")
+    }
+    if (Dog() is Animal) {
+        Dog().move()
+        println("Dog() is Animal")
+    }
 
+    // 제네릭
+    val box1 = Box<Int>(10)
+    val box2 = Box<String>("10")
+    val box3 = Box("10")
+
+    // 콜백 함수
+    myFunc(){ println("함수 호출") }
+    myFunc { println("함수 호출") }
+}
 // 함수
 fun sum1(a: Int, b: Int): Int {
     return a + b
 }
+
 fun sum2(a: Int, b: Int) = a + b
+
 //fun sum2(a:Int,b:Int): Int = a+b
 fun sum2(a: Int, b: Int, c: Int, d: Int = 3) = a + b + c + d
 
 // Class
-class Person1(val name:String, var age : Int){
-    var adult : Boolean = false
+class Person1(val name: String, var age: Int) {
+    var adult: Boolean = false
         private set
         get() = field
 
     init {
         println("Person1_init")
-        adult = if (age>20) true else false
+        adult = if (age > 20) true else false
     }
 
     override fun toString(): String {
@@ -224,9 +244,62 @@ class Person2(
     private val name: String,
     var age: Int//default public
 )
+
 // data class
-data class Person3(val name:String, var age : Int){
+data class Person3(val name: String, var age: Int) {
 
 }
 
-// 다음은 상속
+// 상속
+abstract class Animal {
+    open fun move() {
+        println("이동")
+    }
+}
+
+open class Dog : Animal() {
+    override fun move() {
+        print("Dog ")
+        super.move()
+    }
+}
+
+class Milk : Dog() {
+    override fun move() {
+        print("Milk the ")
+        super.move()
+    }
+}
+
+
+// 인터페이스
+interface Drawable {
+    fun draw()
+}
+
+interface Painting {
+    fun paint()
+}
+
+class Cat : Animal(), Drawable, Painting {
+    override fun draw() {
+        println("고양이 그리기")
+    }
+
+    override fun paint() {
+        println("Cata paint")
+    }
+}
+
+// 제네릭
+class Box<T>(val value: T) {
+
+}
+
+// 콜백 함수 (고차함수)
+fun myFunc(callback: () -> Unit = {}){
+    println("함수 시작")
+    callback()
+    println("함수 끝")
+}
+
