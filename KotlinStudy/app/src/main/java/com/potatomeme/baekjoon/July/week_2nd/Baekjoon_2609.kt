@@ -2,8 +2,9 @@ package com.potatomeme.baekjoon.July.week_2nd
 
 import java.util.*
 
-val sc = Scanner(System.`in`)
+
 fun main() = with(System.out.bufferedWriter()) {
+    val sc = Scanner(System.`in`)
     var A = sc.nextInt()
     var B = sc.nextInt()
     if (A < B) {
