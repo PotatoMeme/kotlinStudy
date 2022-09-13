@@ -1,9 +1,9 @@
-package com.potatomeme.inflearnKotlin
+package com.potatomeme.inflearnKotlin.threeStepToKotlin
 
 import kotlin.properties.Delegates
 
 fun main() {
-   val human = Human1()
+    val human = Human1()
     human.name = "test"
 }
 
@@ -81,16 +81,16 @@ fun forAndWhile() {
     for (i3 in 10 downTo 1) println("i3 : $i3")
 
     var num = 10
-    while(num > 0){
-        num --
+    while (num > 0) {
+        num--
         println("num : $num")
     }
 }
 
 // 7. Nullable / NonNull
-fun nullcheck(){
+fun nullcheck() {
     // NPE  -> NullPointException
-    var name : String? = null
+    var name: String? = null
 
     if (name != null) {
         println("test1 : ${name.uppercase()}")
@@ -102,9 +102,9 @@ fun nullcheck(){
     name = null
 
     // ?:
-    println("test2 : ${name?:"it's null".uppercase()}")
+    println("test2 : ${name ?: "it's null".uppercase()}")
     name = "it's not null"
-    println("test2 : ${name?.uppercase()?:"it's null"}")
+    println("test2 : ${name?.uppercase() ?: "it's null"}")
     name = null
 
     // !! -> null 아닌것을 확신한경우 null일경우 실행시 npe발생생
@@ -117,38 +117,42 @@ fun nullcheck(){
     // ?.let -> null이 아닐경우 실행
     //name?.let { println("test4 :  ${it.uppercase()}")}
     name = "it's not null"
-    name?.let { println("test4 :  ${it.uppercase()}")}
+    name?.let { println("test4 :  ${it.uppercase()}") }
     name = null
 }
 
 // 8. Class
-class Human1{
+class Human1 {
     var name = "defaultHuman"
-    fun eatingCake(){
+    fun eatingCake() {
         println("eatingCake Now")
     }
 }
+
 // class Human2(name:String = "defaultHuman"){
 // val realName = name
-open class Human2(var name:String = "defaultHuman"){
+open class Human2(var name: String = "defaultHuman") {
     var age = 0
 
     init { // 생성자 코드블럭
         println("응애 나 아기 객체 $name $age 살")
     }
-    constructor(name:String,age :Int ) : this(name){ // 부생성자
-        this.age =  age
+
+    constructor(name: String, age: Int) : this(name) { // 부생성자
+        this.age = age
         println("응애 나 아기 객체 $name $age 살")
     }
-    fun eatingCake(){
+
+    fun eatingCake() {
         println("eatingCake Now $name")
     }
-    open fun singASong(){
+
+    open fun singASong() {
         println("Sing a Song Now $name")
     }
 }
 
-class Korean : Human2(){ // 상속은 1개만 가능
+class Korean : Human2() { // 상속은 1개만 가능
     override fun singASong() {
         //super.singASong()
         println("Sing a Song Now $name ,in Korea")
