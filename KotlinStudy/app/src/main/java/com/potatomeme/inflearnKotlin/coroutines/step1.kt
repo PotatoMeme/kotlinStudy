@@ -1,7 +1,5 @@
 package com.potatomeme.inflearnKotlin.coroutines
 
-import android.widget.TextView
-import com.potatomeme.R
 
 // Coroutine 루틴의 일종
 // 협동 루틴이라 할 수 있다
