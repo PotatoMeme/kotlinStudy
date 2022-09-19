@@ -2,25 +2,30 @@ package com.potatomeme.room
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.room.Room
-import kotlinx.android.synthetic.main.activity_main.*
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import com.potatomeme.room.databinding.ActivityMainBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+
 
 class MainActivity : AppCompatActivity() {
+    lateinit var mainViewModel: MainViewModel
+    lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        val db = Room.databaseBuilder(
-            applicationContext,
-            AppDatabase::class.java, "database-name"
-        ).allowMainThreadQueries().build()
 
-        db.todoDao().selectAll().observe(this) {
-            tv_result.text = it.toString()
-        }
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        //liveData를 사용하기 위해서
+        binding.lifecycleOwner = this
 
-        btn_add.setOnClickListener {
-            db.todoDao().insert(Todo(et_name.text.toString()))
+        mainViewModel = ViewModelProvider(this)[MainViewModel::class.java]
+        binding.viewModel = mainViewModel
+
+        binding.btnAdd.setOnClickListener {
+            mainViewModel.insert()
         }
     }
 }
