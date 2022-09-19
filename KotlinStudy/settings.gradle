@@ -14,3 +14,6 @@ dependencyResolutionManagement {
 }
 rootProject.name = "KotlinStudy"
 include ':app'
+include ':mvvc_databinding_livedata'
+include ':room'
+include ':livedata'

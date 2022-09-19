@@ -4,6 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/D/kotlinStudy/KotlinStudy/app/src/main/res/layout/activity_coroutines.xml" value="0.358695652173913" />
+        <entry key="..\:/D/kotlinStudy/KotlinStudy/livedata/src/main/res/layout/activity_main.xml" value="0.1778115501519757" />
+        <entry key="..\:/D/kotlinStudy/KotlinStudy/mvvc_databinding_livedata/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/D/kotlinStudy/KotlinStudy/room/src/main/res/layout/activity_main.xml" value="0.358695652173913" />
       </map>
     </option>
   </component>
