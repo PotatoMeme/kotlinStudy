@@ -10,10 +10,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
+
     private val db = Room.databaseBuilder(
         application,
         AppDatabase::class.java, "database-name"
     ).build()
+
     var todos: LiveData<List<Todo>>
     var newTodo:String? = null
     init {
