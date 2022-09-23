@@ -203,16 +203,16 @@ import kotlinx.coroutines.*
 
 
 // 7. withTimeoutOrNull
-fun main() = runBlocking {
-    val result = withTimeoutOrNull(1300L) {
-        repeat(1000) {
-            println("I'm sleeping $it ...")
-            delay(500L)
-        }
-        "Done" // will get cancelled before it produces this result
-    }
-    println("Result is $result")
-}
+//fun main() = runBlocking {
+//    val result = withTimeoutOrNull(1300L) {
+//        repeat(1000) {
+//            println("I'm sleeping $it ...")
+//            delay(500L)
+//        }
+//        "Done" // will get cancelled before it produces this result
+//    }
+//    println("Result is $result")
+//}
 //I'm sleeping 0 ...
 //I'm sleeping 1 ...
 //I'm sleeping 2 ...
@@ -232,3 +232,33 @@ fun main() = runBlocking {
 //Timeout
 //withTimeout
 //withTimeoutOrNull
+
+
+// testing
+fun main() = runBlocking {
+    val job1 = launch(Dispatchers.Default) {
+        delay(1000L)
+        repeat(10000) {
+            //yield()
+            println("test$it")
+        }
+        println("job : finish")
+        delay(1000L)// suspending함수 호출시 cancel일 경우 여기에서 멈춤
+    }
+    delay(1000L)
+
+    println("main : try finish")
+    job1.cancelAndJoin()
+    println("main : finish")
+
+    val job2 = launch(Dispatchers.Default) {
+       var i = 0
+        while (isActive){
+           println("test${i++}")
+       }
+    }
+    delay(10L)
+    println("main : try finish")
+    job2.cancelAndJoin()
+    println("main : finish")
+}

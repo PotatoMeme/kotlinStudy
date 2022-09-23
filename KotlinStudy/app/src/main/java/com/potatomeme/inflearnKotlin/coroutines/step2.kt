@@ -6,6 +6,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlin.concurrent.thread
 
+// 어떻게하면 코루틴을 실행시킬수 있는지
 
 /** main 1, Essentially, coroutines are light-weight threads */
 /*
