@@ -1,12 +1,5 @@
 package com.potatomeme.inflearnKotlin.modernAndroid
 
-import android.os.Bundle
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 
 // Architecture Pattern
 
@@ -39,8 +32,7 @@ import androidx.lifecycle.ViewModelProvider
 //
 //    // 데이터
 //    companion object{
-//        const val secretName = "user"
-//        const val secretWord = "1234"
+//          //....
 //    }
 //}
 
@@ -67,20 +59,7 @@ import androidx.lifecycle.ViewModelProvider
 //
 //        // 프레젠테이션 로직
 //        binding.included.loginBtn.setOnClickListener {
-//            val isLoginSuccessful = user.login(
-//                binding.included.etUserName.text.toString(),
-//                binding.included.etPassword.text.toString(),
-//            )
-//
-//            if (isLoginSuccessful) {
-//                Toast.makeText(
-//                    this@MvcLoginActivity,
-//                    "${user.userName} Login Successful",
-//                    Toast.LENGTH_SHORT
-//                ).show()
-//            } else {
-//                Toast.makeText(this@MvcLoginActivity, "Login Failed", Toast.LENGTH_SHORT).show()
-//            }
+//          //....
 //        }
 //    }
 //}
@@ -116,10 +95,8 @@ import androidx.lifecycle.ViewModelProvider
 //        get() = User()
 //
 //    override fun login() {
-//        val userName = mvpLoginView.userName.toString()
-//        val password = mvpLoginView.password.toString()
+//          //....
 //        val isLoginSuccessful: Boolean = user.login(userName, password) // model로 부터 data를 받음
-//
 //        mvpLoginView.onLoginResult(isLoginSuccessful) // 받은 데이터를 View에 전달
 //    }
 //}
@@ -154,11 +131,7 @@ import androidx.lifecycle.ViewModelProvider
 //        get() = binding.included.etPassword.text.toString()
 //
 //    override fun onLoginResult(isLoginSuccess: Boolean?) {
-//        if (isLoginSuccess == true) {
-//            Toast.makeText(this@MvpLoginActivity, "$userName Login Successful", Toast.LENGTH_SHORT).show()
-//        } else {
-//            Toast.makeText(this@MvpLoginActivity, "Login Failed", Toast.LENGTH_SHORT).show()
-//        }
+//          //....
 //    }
 //}
 
