@@ -14,4 +14,8 @@ package com.potatomeme.modernandroid.docs
 // 인스턴스가 뷰의 id를 프로퍼티로 제공하게 된다.
 
 // 장점
-// 
+// Null-safe : 뷰 바인딩은 서로 다른  layout의 같은 ID를 가진 뷰를 정확히 구분할 수 있다.
+// 만약 그럴수 없을 경우 @Nullable로 만들어 사용할 수 없게 한다
+
+// Type-safe : findViewById를 사용할 경우 뷰에 잘못된 타입을 지정할 우려가 있는데
+// 뷰 바인딩에서는 그런 문제가 발생하지 않는다

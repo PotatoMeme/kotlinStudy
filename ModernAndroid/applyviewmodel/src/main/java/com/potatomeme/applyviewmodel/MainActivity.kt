@@ -2,9 +2,7 @@ package com.potatomeme.applyviewmodel
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
-import androidx.lifecycle.ViewModelProvider
 import com.potatomeme.applyviewmodel.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -67,16 +65,34 @@ class MainActivity : AppCompatActivity() {
 //        }
 
         // savedState
-       val factory = MyViewModelFactory(100,this,savedInstanceState)
+//       val factory = MyViewModelFactory(100,this,savedInstanceState)
+//        val myViewModel : MyViewModel by viewModels { factory }
+//        binding.tvNum.text = myViewModel.counter.toString()
+//
+//        binding.btnIncrease.setOnClickListener {
+////            myViewModel.counter += 1
+////            myViewModel.saveState()
+//            myViewModel.addCounter()
+//            binding.tvNum.text = myViewModel.counter.toString()
+//        }
+
+        // Live data
+        val factory = MyViewModelFactory(100,this,savedInstanceState)
         val myViewModel : MyViewModel by viewModels { factory }
-        binding.tvNum.text = myViewModel.counter.toString()
+        binding.tvNum.text = myViewModel.liveCounter.toString()
 
         binding.btnIncrease.setOnClickListener {
-//            myViewModel.counter += 1
-//            myViewModel.saveState()
-            myViewModel.addCounter()
-            binding.tvNum.text = myViewModel.counter.toString()
+            myViewModel.liveCounter.value = myViewModel.liveCounter.value?.plus(1)
+            myViewModel.saveState()
         }
+
+//        myViewModel.liveCounter.observe(this){ counter ->
+//            binding.tvNum.text = counter.toString()
+//        }
+        myViewModel.modifiedCounter.observe(this){ counter ->
+            binding.tvNum.text = counter.toString()
+        }
+
 
     }
 }
