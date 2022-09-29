@@ -3,96 +3,64 @@ package com.potatomeme.applyviewmodel
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.databinding.DataBindingUtil
 import com.potatomeme.applyviewmodel.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-
-    private val binding : ActivityMainBinding by lazy {
-        ActivityMainBinding.inflate(layoutInflater)
-    }
+//    private val binding: ActivityMainBinding by lazy {
+//        ActivityMainBinding.inflate(layoutInflater)
+//    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(binding.root)
+//        setContentView(binding.root)
+        val binding =
+            DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
 
+        // 리셋되는 카운터
 //        var counter = 100
-//        binding.tvNum.text = counter.toString()
+//        binding.textView.text = counter.toString()
 //
-//        binding.btnIncrease.setOnClickListener {
-//            counter++
-//            binding.tvNum.text = counter.toString()
-//        }
-//
-//        binding.btnDecrease.setOnClickListener {
-//            counter--
-//            binding.tvNum.text = counter.toString()
+//        binding.button.setOnClickListener {
+//            counter += 1
+//            binding.textView.text = counter.toString()
 //        }
 
-//        var myViewModel = ViewModelProvider(this).get(MyViewModel::class.java)
+        // 뷰모델 적용
+//        val myViewModel = ViewModelProvider(this).get(MyViewModel::class.java)
 //        myViewModel.counter = 100
-//        binding.tvNum.text = myViewModel.counter.toString()
+//        binding.textView.text = myViewModel.counter.toString()
 //
-//        binding.btnIncrease.setOnClickListener {
+//        binding.button.setOnClickListener {
 //            myViewModel.counter += 1
-//            binding.tvNum.text = myViewModel.counter.toString()
+//            binding.textView.text = myViewModel.counter.toString()
 //        }
 
-        // ViewModelProvider로 ViewModel객체를 만들때 초기값을 전달해주는것이 금지 되었기때문에 factory 패턴으로 초기값을 전달해 주어야 합니다
-
-//        val factory = MyViewModelFactory(100)
+        // 팩토리 패턴을 통해 뷰모델에 초기값 적용
+        val factory = MyViewModelFactory(10, this)
 //        val myViewModel = ViewModelProvider(this, factory).get(MyViewModel::class.java)
-//
-//        binding.tvNum.text = myViewModel.counter.toString()
-//
-//        binding.btnIncrease.setOnClickListener {
+        val myViewModel: MyViewModel by viewModels { factory }
+//        binding.textView.text = myViewModel.counter.toString()
+
+        binding.lifecycleOwner = this
+        binding.viewmodel = myViewModel
+
+        binding.button.setOnClickListener {
 //            myViewModel.counter += 1
-//            binding.tvNum.text = myViewModel.counter.toString()
-//        }
+//            myViewModel.saveState()
+//            binding.textView.text = myViewModel.counter.toString()
 
-        // by 키워드로 손쉽게 만들수도 있습니다.
-        // implementation("androidx.activity:activity-ktx:1.4.0")
-        // implementation("androidx.fragment:fragment-ktx:1.4.1")
-        // 추가후
-
-//        val factory = MyViewModelFactory(100)
-//        val myViewModel by viewModels<MyViewModel>() { factory }
-//
-//        binding.tvNum.text = myViewModel.counter.toString()
-//
-//        binding.btnIncrease.setOnClickListener {
-//            myViewModel.counter += 1
-//            binding.tvNum.text = myViewModel.counter.toString()
-//        }
-
-        // savedState
-//       val factory = MyViewModelFactory(100,this,savedInstanceState)
-//        val myViewModel : MyViewModel by viewModels { factory }
-//        binding.tvNum.text = myViewModel.counter.toString()
-//
-//        binding.btnIncrease.setOnClickListener {
-////            myViewModel.counter += 1
-////            myViewModel.saveState()
-//            myViewModel.addCounter()
-//            binding.tvNum.text = myViewModel.counter.toString()
-//        }
-
-        // Live data
-        val factory = MyViewModelFactory(100,this,savedInstanceState)
-        val myViewModel : MyViewModel by viewModels { factory }
-        binding.tvNum.text = myViewModel.liveCounter.toString()
-
-        binding.btnIncrease.setOnClickListener {
             myViewModel.liveCounter.value = myViewModel.liveCounter.value?.plus(1)
-            myViewModel.saveState()
         }
 
-//        myViewModel.liveCounter.observe(this){ counter ->
-//            binding.tvNum.text = counter.toString()
+        // 라이브데이터 옵저빙
+//        myViewModel.liveCounter.observe(this) { counter ->
+//            binding.textView.text = counter.toString()
 //        }
-        myViewModel.modifiedCounter.observe(this){ counter ->
-            binding.tvNum.text = counter.toString()
+
+        // 라이브데이터 값 변경
+        myViewModel.modifiedCounter.observe(this) { counter ->
+            binding.textView.text = counter
         }
-
-
     }
 }

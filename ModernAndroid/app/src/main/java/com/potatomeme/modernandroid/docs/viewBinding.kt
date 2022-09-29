@@ -1,5 +1,7 @@
 package com.potatomeme.modernandroid.docs
 
+import android.os.Bundle
+
 // ViewBinding
 
 // 뷰 바인딩의 필요성
@@ -19,3 +21,28 @@ package com.potatomeme.modernandroid.docs
 
 // Type-safe : findViewById를 사용할 경우 뷰에 잘못된 타입을 지정할 우려가 있는데
 // 뷰 바인딩에서는 그런 문제가 발생하지 않는다
+
+// ---------------------------------------------------------------------------------------------------------------------------------------
+
+// in build.gradle
+
+//buildFeatures{
+//    viewBinding = true
+//}
+
+// in MainActivity
+
+//private lateinit var binding : ActivityMainBinding
+//...
+//
+//override fun onCreate(savedInstanceState: Bundle?) {
+//    binding = ActivityMainBinding.inflate(layoutInflater)
+//    setContentView(binding.root)
+//
+//    binding.textView1.text = "this is TextView"
+//
+//    binding.button1.setOnClickListener{
+//        binding.textView1.text = binding.editText1.text
+//    }
+//}
+//}
