@@ -16,3 +16,4 @@ rootProject.name = "ModernAndroid"
 include ':app'
 include ':viewbinding'
 include ':applyviewmodel'
+include ':booksearch'
