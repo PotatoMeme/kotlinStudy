@@ -9,8 +9,15 @@ import androidx.lifecycle.ViewModel
 
 class MyViewModel(
     _counter : Int,
+    private val repositoryImpl: MyRepositoryImpl,
     private val savedStateHandle: SavedStateHandle,
 ): ViewModel() {
+
+    val counterFromRepository :LiveData<Int> = repositoryImpl.getCounter()
+
+    fun increaseCounter(){
+        repositoryImpl.increaseCounter()
+    }
 
     //    var counter: Int = _counter
     var counter: Int = savedStateHandle.get<Int>(SAVE_STATE_KEY) ?: _counter

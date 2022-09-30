@@ -12,6 +12,9 @@ import androidx.databinding.BindingAdapter
 
 // "app:progressScaled","android:max"를 관찰하면 실행(복수개)
 @BindingAdapter( value = ["app:progressScaled","android:max"], requireAll = true)
-fun setProgress(progressBar: ProgressBar, counter: Int, max: Int) {
+fun setProgress(progressBar: ProgressBar,//View
+                counter: Int,//"app:progressScaled"
+                max: Int//"android:max"
+) {
     progressBar.progress = (counter * 2).coerceAtMost(max)
 }
