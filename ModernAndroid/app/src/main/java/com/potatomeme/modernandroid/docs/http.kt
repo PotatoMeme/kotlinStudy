@@ -3,6 +3,8 @@ package com.potatomeme.modernandroid.docs
 
 // 안드로이드 Http 통신
 
+// ---------------------------------------------------------------------------------------------------------------------------------------
+
 // 소켓 연결
 // 소켓 : 네트워크 상의 두프로그램 사이에서 일어나는 양방향 통신중 한쪽의 엔드 포인트
 // 클라이언트와 서버가 특정 포트를 통해 연결을 유지
@@ -20,6 +22,8 @@ package com.potatomeme.modernandroid.docs
 // Connectionless(비연결성, 소켓을 이용하기는 하지만 용건이 있을때만 연결을함 끝나면 연결이 끊김 )
 // Stateless(서버가 클라이언트를 식별할수 없음)
 
+// ---------------------------------------------------------------------------------------------------------------------------------------
+
 // HTTP Method
 // 주요 메소드
 // GET : 리소스 조회
@@ -33,6 +37,8 @@ package com.potatomeme.modernandroid.docs
 // OPTIONS: 대상 리소스에 대한 통신 가능 옵션을 설명(주로 CORS에서 사용)
 // CONNECT: 대상 자원으로 식별되는 서버에 대한 터널을 설정
 // TRACE: 대상 리소스에 대한 경로를 따라 메시지 루프백 테스트를 수행
+
+// ---------------------------------------------------------------------------------------------------------------------------------------
 
 // HTTP 상태코드
 // 1xx (Informational): 요청이 수신되어 처리중
@@ -61,6 +67,8 @@ package com.potatomeme.modernandroid.docs
 // 500 Internal Server Error : 서버 문제로 오류 발생, 애매하면 500 오류
 // 503 Service Unavailable : 서비스 이용 불가
 
+// ---------------------------------------------------------------------------------------------------------------------------------------
+
 // RESTful Api
 // Representational State Transfer 의 약자
 // 기준
@@ -70,9 +78,12 @@ package com.potatomeme.modernandroid.docs
 // 시스템이 계층화(Layered) 되어있어야 함
 // 일관성있는 인터페이스
 
+// ---------------------------------------------------------------------------------------------------------------------------------------
+
 // 안드로이드 http 클라이언트 라이브러리
 
 // HttpClient (Apache, 6버전부터 사라짐)
+
 // HttpUrlConnection ( 구글,기존의 URLConnection에 HTTP를 다루는데 필요한 메서드를 추가한 클래스)
 // URL url = new URL("http:www.android.com/");
 // HttpUrlConnection urlConnection = (HttpUrlConnection) url.openConnection();
@@ -83,6 +94,7 @@ package com.potatomeme.modernandroid.docs
 //      urlConnection.disconnect();
 // }
 
+// ---------------------------------------------------------------------------------------------------------------------------------------
 
 // Volley ( HttpUrlConnection을 더 편하게 사용하기위해 랩핑한 라이브러리)
 // val queue = Volley.newRequestQueue(this)
@@ -93,6 +105,8 @@ package com.potatomeme.modernandroid.docs
 //      },
 //      Response.ErrorListener { textView.text = "That didn't work!" })
 // queue.add(stringRequest)
+
+// ---------------------------------------------------------------------------------------------------------------------------------------
 
 // OkHttp( 스케어 )
 // OkHttpClient client = new OkHttpClient();
@@ -105,6 +119,8 @@ package com.potatomeme.modernandroid.docs
 //      }
 // }
 
+// ---------------------------------------------------------------------------------------------------------------------------------------
+
 // Retrofit ( OkHttp를 더 편하게 사용하기위해 랩핑한 라이브러리)
 // public interface GitHubService {
 //      @GET("users/{user}/repos")
@@ -115,6 +131,8 @@ package com.potatomeme.modernandroid.docs
 //      .build();
 // GitHubService service = retrofit.create(GitHubService.class);
 // Call<List<Repo>> repos = service.listRepos("octocat");
+
+// ---------------------------------------------------------------------------------------------------------------------------------------
 
 //                   Volley  vs  Retrofit
 // Automatic           no          yes

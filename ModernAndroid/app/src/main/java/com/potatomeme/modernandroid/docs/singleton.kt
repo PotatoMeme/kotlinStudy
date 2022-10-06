@@ -2,6 +2,8 @@ package com.potatomeme.modernandroid.docs
 
 // Singleton Pattern
 
+// ---------------------------------------------------------------------------------------------------------------------------------------
+
 // Singleton
 // 소프트웨어 디자인 패턴중하나
 // 클래스의 인스턴스를 단 하나만 만들어야 할때 사용
@@ -36,6 +38,8 @@ package com.potatomeme.modernandroid.docs
 // }
 // 동시접근할경우 Singleton이 깨지게 됨,스레드 동기화 문제
 
+// ---------------------------------------------------------------------------------------------------------------------------------------
+
 // Double Checked Locking
 // class DBHandler private constructor(context : Context){
 //      companion object {
@@ -50,6 +54,8 @@ package com.potatomeme.modernandroid.docs
 //      }
 // }
 // 자주 쓰이지만 이방법처럼 잠그는방식은 처리속도에 영향을 줄수 있다
+
+// ---------------------------------------------------------------------------------------------------------------------------------------
 
 // Bill Pugh Solution(Java)
 // public class DBHandler {

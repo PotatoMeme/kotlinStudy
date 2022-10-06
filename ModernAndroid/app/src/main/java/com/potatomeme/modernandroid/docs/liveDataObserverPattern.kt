@@ -1,10 +1,9 @@
 package com.potatomeme.modernandroid.docs
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
 
 // LiveData의 개념
+
+// ---------------------------------------------------------------------------------------------------------------------------------------
 
 // LiveData is a data holder class that can be observed within a given lifecycle.
 // LiveData는 주어진 수명 주기 내에서 관찰할 수 있는 데이터 홀더 클래스입니다.
@@ -13,6 +12,8 @@ import androidx.lifecycle.Transformations
 // but can also be used for sharing data between different modules in your application in a decoupled fashion.
 // 이 클래스는 ViewModel의 개별 데이터 필드를 보유하도록 설계되었지만
 // 분리된 방식으로 애플리케이션의 서로 다른 모듈 간에 데이터를 공유하는 데 사용할 수도 있습니다.
+
+// ---------------------------------------------------------------------------------------------------------------------------------------
 
 // Observer Pattern의 개념
 // Subject의 상태 변화를 관찰 하는 Observer들을 객체와 연결
@@ -37,6 +38,8 @@ import androidx.lifecycle.Transformations
 //    //Do something
 //})
 
+// ---------------------------------------------------------------------------------------------------------------------------------------
+
 // 차이점
 
 // Observable :  콜백 등록
@@ -47,6 +50,8 @@ import androidx.lifecycle.Transformations
 // lifecycle이 start 혹은  resumed로 활성화 상태일 때만 observe를 수행
 // 나머지 상태에서는 자동으로 비활성화
 
+// ---------------------------------------------------------------------------------------------------------------------------------------
+
 // LiveData의 이점
 // UI와 데이터 상태의 일치 보장
 // 메모리 누수 없음
@@ -55,6 +60,8 @@ import androidx.lifecycle.Transformations
 // 최신 데이터 유지
 // 적절한 구성 변경
 // 리소스 공유
+
+// ---------------------------------------------------------------------------------------------------------------------------------------
 
 //  Tranformations로  LiveData 값 변경하기
 
@@ -70,6 +77,7 @@ import androidx.lifecycle.Transformations
 // Transformations.map의 return 값(람다의 결과물 말고)은 LiveData이다.
 // 기존 컬렉션의 map이 그러하듯 Transformations.map 역시 내용물 요소의 값만 변환 시킬 뿐 LiveData를 리턴한다.
 
+// ---------------------------------------------------------------------------------------------------------------------------------------
 
 // * switchMap
 //val userIdLiveData: MutableLiveData<Int> = MutableLiveData<Int>().apply { value = 1 };
