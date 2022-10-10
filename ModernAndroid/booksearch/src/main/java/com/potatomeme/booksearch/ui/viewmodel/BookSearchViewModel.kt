@@ -2,6 +2,7 @@ package com.potatomeme.booksearch.ui.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.*
+import com.potatomeme.booksearch.data.model.Book
 import com.potatomeme.booksearch.data.model.SearchResponse
 import com.potatomeme.booksearch.data.repository.BookSearchRepository
 import kotlinx.coroutines.Dispatchers
@@ -27,6 +28,18 @@ class BookSearchViewModel(
             Log.d(TAG, response.message())
         }
     }
+
+    // Room
+    fun saveBook(book: Book) = viewModelScope.launch(Dispatchers.IO) {
+        bookSearchRepository.insertBook(book)
+    }
+
+    fun deleteBook(book: Book) = viewModelScope.launch(Dispatchers.IO) {
+        bookSearchRepository.deleteBook(book)
+    }
+
+    val favoriteBooks: LiveData<List<Book>> = bookSearchRepository.getFavoriteBooks()
+
 
     // SavedState
     var query = String()
