@@ -14,6 +14,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.potatomeme.booksearch.databinding.FragmentFavoriteBinding
 import com.potatomeme.booksearch.ui.adapter.BookSearchAdapter
 import com.potatomeme.booksearch.ui.viewmodel.BookSearchViewModel
+import com.potatomeme.booksearch.util.collectLatestStateFlow
 
 
 class FavoriteFragment : Fragment() {
@@ -38,11 +39,28 @@ class FavoriteFragment : Fragment() {
 
         setupRecyclerView()
         setupTouchHelper(view)
-        bookSearchViewModel.favoriteBooks.observe(viewLifecycleOwner) {
+//        bookSearchViewModel.favoriteBooks.observe(viewLifecycleOwner) {
+//            bookSearchAdapter.submitList(it)
+//        }
+
+//        lifecycleScope.launch {
+//            bookSearchViewModel.favoriteBooks.collectLatest {
+//                bookSearchAdapter.submitList(it)
+//            }
+//        }
+
+//        viewLifecycleOwner.lifecycleScope.launch {
+//            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+//                bookSearchViewModel.favoriteBooks.collectLatest {
+//                    bookSearchAdapter.submitList(it)
+//                }
+//            }
+//        }
+
+        collectLatestStateFlow(bookSearchViewModel.favoriteBooks) {
             bookSearchAdapter.submitList(it)
         }
 
-  
     }
 
     private fun setupRecyclerView() {
