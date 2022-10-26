@@ -1,5 +1,5 @@
 package com.potatomeme.programmers
 
 fun main(){
-    print("test")
+    print(13/10)
 }

@@ -1,22 +1,25 @@
 package com.potatomeme.programmers.codingtest.years22.october.level1
 
-import kotlin.math.sqrt
-
-// 짝수와 홀수
-// 링크 : https://school.programmers.co.kr/learn/courses/30/lessons/12937?language=kotlin
+// 약수의 합
+// 링크 : https://school.programmers.co.kr/learn/courses/30/lessons/12928
 
 // 문제 설명
-// 정수 num이 짝수일 경우 "Even"을 반환하고 홀수인 경우 "Odd"를 반환하는 함수, solution을 완성해주세요.
+// 정수 n을 입력받아 n의 약수를 모두 더한 값을 리턴하는 함수, solution을 완성해주세요.
 //
-// 제한 조건
-// num은 int 범위의 정수입니다.
-// 0은 짝수입니다.
+// 제한 사항
+// n은 0 이상 3000이하인 정수입니다.
 // 입출력 예
-// num	return
-// 3	"Odd"
-// 4	"Even"
+// n	return
+// 12	28
+// 5	6
+// 입출력 예 설명
+// 입출력 예 #1
+// 12의 약수는 1, 2, 3, 4, 6, 12입니다. 이를 모두 더하면 28입니다.
+//
+// 입출력 예 #2
+// 5의 약수는 1, 5입니다. 이를 모두 더하면 6입니다.
 
-class Solution1228 {
+class Solution12928 {
     fun mySolution1(n: Int): Int {
         var answer = 0
         for (i in 1..n) {
