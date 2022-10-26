@@ -26,9 +26,15 @@ package com.potatomeme.programmers.codingtest.`2022`.october
 // num1이 7이고 num2가 99이므로 다릅니다. 따라서 -1을 return합니다.
 
 class Solution120807 {
-    fun solution(num1: Int, num2: Int) = if(num1 == num2){
+    fun mySolution(num1: Int, num2: Int) = if(num1 == num2){
         1
     }else{
         -1
+    }
+
+    fun userSolution1(num1: Int, num2: Int) = if(num1 == num2) 1 else -1
+    fun userSolution2(num1: Int, num2: Int) = when(num1 == num2){
+        true -> 1
+        false -> -1
     }
 }
