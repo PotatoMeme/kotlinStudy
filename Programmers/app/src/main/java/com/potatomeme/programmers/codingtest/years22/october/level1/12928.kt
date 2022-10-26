@@ -1,5 +1,6 @@
 package com.potatomeme.programmers.codingtest.years22.october.level1
 
+import kotlin.math.sqrt
 
 // 짝수와 홀수
 // 링크 : https://school.programmers.co.kr/learn/courses/30/lessons/12937?language=kotlin
@@ -15,17 +16,18 @@ package com.potatomeme.programmers.codingtest.years22.october.level1
 // 3	"Odd"
 // 4	"Even"
 
-class Solution12937 {
-    fun mySolution1(num: Int): String = if(num % 2 == 0) "Even" else "Odd"
-
-
-    fun mySolution2(num: Int): String = when (num % 2) {
-        0 -> "Even"
-        1 -> "Odd"
-        else -> {
-            throw ExceptionInInitializerError("Error")
+class Solution1228 {
+    fun mySolution1(n: Int): Int {
+        var answer = 0
+        for (i in 1..n) {
+            if (n % i == 0) answer += i
         }
+        return answer
     }
 
-    fun userSolution1(num: Int): String  = if (num.and(1) == 0) "Even" else "Odd"
+    fun userSolution1(n: Int): Int = (1..n).filter { n % it == 0 }.sum()
+
+    fun userSolution2(n: Int): Int =
+        if (n <= 1) n else n + IntArray(n / 2) { it + 1 }.filter { n % it == 0 }
+            .reduce { total, num -> total + num }
 }
