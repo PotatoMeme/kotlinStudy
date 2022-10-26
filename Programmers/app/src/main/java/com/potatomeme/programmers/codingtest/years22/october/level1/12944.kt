@@ -15,7 +15,7 @@ package com.potatomeme.programmers.codingtest.years22.october.level1
 // [1,2,3,4]	2.5
 // [5,5]	5
 
-class Solution120807 {
+class Solution12944 {
     fun mySolution1(arr: IntArray): Double {
         var num = 0.0
         arr.forEach { num += it }
