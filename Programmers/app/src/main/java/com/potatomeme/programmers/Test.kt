@@ -1,5 +1,7 @@
 package com.potatomeme.programmers
 
+import kotlin.math.sqrt
+
 fun main(){
-    print(13/10)
+    print(sqrt(122.toDouble()).toInt())
 }
