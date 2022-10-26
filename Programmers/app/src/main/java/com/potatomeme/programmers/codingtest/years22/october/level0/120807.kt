@@ -1,4 +1,4 @@
-package com.potatomeme.programmers.codingtest.years22.october
+package com.potatomeme.programmers.codingtest.years22.october.level0
 
 // 숫자 비교하기
 // 링크 : https://school.programmers.co.kr/learn/courses/30/lessons/120807?language=kotlin
