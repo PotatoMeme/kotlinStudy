@@ -1,6 +1,5 @@
 package com.potatomeme.programmers.codingtest.years22.october.level2
 
-import com.potatomeme.programmers.solution
 
 //피보나치 수
 //링크 : https://school.programmers.co.kr/learn/courses/30/lessons/12945
@@ -31,7 +30,7 @@ class Solution12945 {
     fun mySolution1(n: Int): Int = when (n) {
         0 -> 0
         1 -> 1
-        else -> (solution(n - 1) + solution(n - 2)) % 1234567
+        else -> (mySolution1(n - 1) + mySolution1(n - 2)) % 1234567
     }// 시간 초과
 
     fun mySolution2(n: Int): Int {
