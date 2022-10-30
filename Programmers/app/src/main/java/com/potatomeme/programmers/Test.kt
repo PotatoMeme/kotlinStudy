@@ -4,10 +4,7 @@ import kotlin.math.abs
 
 
 fun main() {
-    var str = "01234"
-    println(str.removeRange(1..2))
-    println(str.substring(1))
 
-    println("".replace("^$".toRegex(), "a"))
+    println("aya".replace("aya|ye|woo|ma".toRegex(), ""))
 }
 
