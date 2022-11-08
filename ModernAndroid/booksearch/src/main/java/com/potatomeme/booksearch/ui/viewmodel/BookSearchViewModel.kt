@@ -8,12 +8,14 @@ import com.potatomeme.booksearch.data.repository.BookSearchRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class BookSearchViewModel(
     private val bookSearchRepository: BookSearchRepository,
-    private val savedStateHandle: SavedStateHandle
+    private val savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
 
     //Api
@@ -21,7 +23,7 @@ class BookSearchViewModel(
     val searchResult: LiveData<SearchResponse> get() = _searchResult
 
     fun searchBooks(query: String) = viewModelScope.launch(Dispatchers.IO) {
-        val response = bookSearchRepository.searchBooks(query, "accuracy", 1, 15)
+        val response = bookSearchRepository.searchBooks(query, getSortMode(), 1, 15)
         if (response.isSuccessful) {
             response.body()?.let { body ->
                 _searchResult.postValue(body)
@@ -54,6 +56,15 @@ class BookSearchViewModel(
 
     init {
         query = savedStateHandle.get<String>(SAVE_STATE_KEY) ?: ""
+    }
+
+    // DataStore
+    fun saveSortMode(value: String) = viewModelScope.launch(Dispatchers.IO) {
+        bookSearchRepository.saveSortMode(value)
+    }
+
+    suspend fun getSortMode() = withContext(Dispatchers.IO) {
+        bookSearchRepository.getSortMode().first()
     }
 
     companion object {
