@@ -78,6 +78,21 @@ class BookSearchRepositoryImpl(
 
         return Pager(
             config = PagingConfig(
+                pageSize = PAGING_SIZE,// 어떤기기가 대상이되더라도 뷰홀더에 표시할 데이터가 모자라지 않을 값으로 설정
+                enablePlaceholders = false,
+                // true : 리파짓토리의 전체 데이터 사이즈를 받아와서 리사이클러뷰에 플레이스홀더에 미리 만들어놓고 화면에 표사하지 않는항목은 null로 표시
+                maxSize = PAGING_SIZE * 3
+                // 페이저가 한번에 가지고 있을수 있는 사이즈
+            ),
+            pagingSourceFactory = pagingSourceFactory
+        ).flow
+    }
+
+    override fun searchBooksPaging(query: String, sort: String): Flow<PagingData<Book>> {
+        val pagingSourceFactory = { BookSearchPagingSource(query, sort) }
+
+        return Pager(
+            config = PagingConfig(
                 pageSize = PAGING_SIZE,
                 enablePlaceholders = false,
                 maxSize = PAGING_SIZE * 3
