@@ -21,6 +21,26 @@ import kotlin.math.sqrt
 //976은 제곱수가 아닙니다. 따라서 2를 return합니다.
 
 class Solution120909 {
+    // public int solution(int[] nums) {
+    //        Set<Integer> set_nums = new HashSet<>();
+    //        for (int i: nums) set_nums.add(i);
+    //        if (nums.length/2 > set_nums.size() ){
+    //            return set_nums.size();
+    //        }else{
+    //            return nums.length/2;
+    //        }
+    //    }
+
+    fun solution(nums: IntArray): Int {
+        val set_nums: MutableSet<Int> = HashSet()
+        for (i in nums) set_nums.add(i)
+        return if (nums.size / 2 > set_nums.size) {
+            set_nums.size
+        } else {
+            nums.size / 2
+        }
+    }
+
     fun solution(n: Int): Int =  if(sqrt(n.toDouble())%1 == 0.0) 1 else 2
     // 0.03 ~ 0.07
 }
