@@ -20,7 +20,7 @@ package com.potatomeme.programmers.codingtest.years22.december.level0
 //소문자는 대문자로 대문자는 소문자로 바꾼 "ABcDeFGHij"를 return합니다.
 
 
-class Solution120805 {
+class Solution120893 {
     private val dif = 'a' - 'A'
     fun solution(my_string: String): String {
         var answer = StringBuilder()
