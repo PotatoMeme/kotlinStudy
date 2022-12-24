@@ -55,8 +55,8 @@ class Solution42576 {
         participant: Array<String>, completion: Array<String>,
     ): String {
         var map = HashMap<String,Int>()
-        participant.forEach { map[it] = map[it]?:0 + 1 }
-        completion.forEach { map[it] = map[it]?:0 - 1 }
+        participant.forEach { map[it] = (map[it]?:0) + 1 }
+        completion.forEach { map[it] = (map[it]?:0) - 1 }
         map.forEach { if (it.value == 1) return it.key }
         return ""
     }
