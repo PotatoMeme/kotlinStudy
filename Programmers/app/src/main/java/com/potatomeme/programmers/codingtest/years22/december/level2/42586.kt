@@ -1,6 +1,6 @@
 package com.potatomeme.programmers.codingtest.years22.december.level1
 
-import java.util.Stack
+import java.util.*
 
 //기능개발
 //문제 설명
@@ -42,22 +42,22 @@ class Solution42586 {
         for (i in progresses.size - 1 downTo 0) {
             //val data = ceil(.toFloat() / speeds[i]).toInt() - time
             var time = (100 - progresses[i]) / speeds[i]
-            if ( progresses[i] + time * speeds[i] < 100) time++
+            if (progresses[i] + time * speeds[i] < 100) time++
             stack.add(time)
         }
 
         var tmp = 0
         var count = 0
-        while (stack.isNotEmpty()){
+        while (stack.isNotEmpty()) {
             if (tmp >= stack.peek()) {
                 stack.pop()
             } else {
                 tmp = stack.pop()
             }
             count++
-            if (stack.isEmpty()){
+            if (stack.isEmpty()) {
                 answer.add(count)
-            }else if (stack.peek() > tmp){
+            } else if (stack.peek() > tmp) {
                 answer.add(count)
                 count = 0
                 tmp = 0
@@ -65,6 +65,18 @@ class Solution42586 {
         }
         return answer
     }//0.12~0.34ms
+
+    fun solution_refact(progresses: IntArray, speeds: IntArray): List<Int> {
+        val answer = IntArray(100)
+        var day = -1
+        for (i in progresses.indices) {
+            while (progresses[i] + day * speeds[i] < 100) {
+                day++
+            }
+            answer[day]++
+        }
+        return answer.filter { it !== 0 }
+    }//0.03~0.07ms
 }
 
 
