@@ -36,13 +36,19 @@ fun main(args: Array<String>) = with(System.`in`.bufferedReader()) {
 class Solution2747 {
     // try1
     // 시간초과 인자값은 45이하의 자연수이기때문에 값을 미리지정하자
-    // fun solution(number: Int) = (1..number).reduce { acc, i -> acc + i }
+    fun solution_try1(number: Int): Int = when (number) {
+        0 -> 0
+        1, 2 -> 1
+        else -> solution(number - 2) + solution(number - 1)
+    }//이경우 중복이 많음
 
     val arr = IntArray(46)
+
     init {
         arr[0] = 0
         arr[1] = 1
-        for (i in 2..45) arr[i] = arr[i-1] + arr[i-2]
+        for (i in 2..45) arr[i] = arr[i - 1] + arr[i - 2]
     }
+
     fun solution(number: Int) = arr[number]
 }
