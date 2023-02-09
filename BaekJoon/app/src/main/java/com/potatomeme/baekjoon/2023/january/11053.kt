@@ -1,7 +1,6 @@
 package com.potatomeme.baekjoon.`2023`.january
 
-import android.os.Build.VERSION_CODES.N
-import java.nio.file.Files.find
+import java.util.StringTokenizer
 import kotlin.math.max
 
 //https://www.acmicpc.net/problem/1003
@@ -31,21 +30,29 @@ import kotlin.math.max
 
 fun main(args: Array<String>) = with(System.`in`.bufferedReader()) {
     val num = readLine().toInt()
-    val list = readLine().split(" ").map { it.toInt() }
-    val solution = Solution11053_topdown(num,list)
-    print(solution.result)
+//    val list = readLine().split(" ").map { it.toInt() }
+//    val solution = Solution11053_topdown(num, list)
+//    print(solution.result)
+    val st = StringTokenizer(readLine())
+    val arr = IntArray(num)
+    repeat(num) {
+        arr[it] = st.nextToken().toInt()
+    }
+    print(Solution11053ToLIS(arr).result)
 }
 
-class Solution11053(num: Int, list: List<Int>) {
+//Try1
+class Solution11053Try1(num: Int, list: List<Int>) {
     val arr = IntArray(num)
     val result
         get() = arr.max()
+
     init {
         arr[0] = 1
-        for (i in 1 until  num){
+        for (i in 1 until num) {
             var max = 0
-            for (j in i-1 downTo 0){
-                if (list[i] > list[j]){
+            for (j in i - 1 downTo 0) {
+                if (list[i] > list[j]) {
                     if (max < arr[j]) max = arr[j]
                 }
             }
@@ -54,20 +61,22 @@ class Solution11053(num: Int, list: List<Int>) {
     }
 }
 
-class Solution11053_topdown(val num: Int,val list: List<Int>) {
+//Try2
+class Solution11053_topdown(val num: Int, val list: List<Int>) {
     val arr = IntArray(num)
     val result
         get() = arr.max()
+
     init {
         arr[0] = 1
-        find(num-1)
+        find(num - 1)
     }
 
-    fun find(index :Int) :Int{
-        if (arr[index] == 0){
-            for (i in index downTo 0 ){
-                if (list[i] < list[index]){
-                    arr[index] = max(arr[index],find(i))
+    fun find(index: Int): Int {
+        if (arr[index] == 0) {
+            for (i in index downTo 0) {
+                if (list[i] < list[index]) {
+                    arr[index] = max(arr[index], find(i))
                 }
             }
             arr[index] += 1
@@ -75,3 +84,65 @@ class Solution11053_topdown(val num: Int,val list: List<Int>) {
         return arr[index]
     }
 }
+
+
+//Try3 to LIS ( O(NlogN)
+class Solution11053ToLIS(arr: IntArray) {
+
+    val lis = mutableListOf<Int>()
+    val result
+        get() = lis.size
+
+    init {
+        arr.forEach { LIS(it) }
+    }
+
+    fun LIS(num: Int) {
+        for (j in lis.indices) {
+            if (lis[j] == num) {
+                return
+            } else if (lis[j] > num) {
+                lis[j] = num
+                return
+            }
+        }
+        lis.add(num)
+    }
+
+}
+
+class Solution11053Try4(arr: IntArray) {
+
+    val lis = IntArray(arr.size) { -1 }
+    var result: Int = arr.size
+
+    init {
+        arr.forEach { LIS(it) }
+        setting()
+    }
+
+    fun LIS(num: Int) {
+        for (j in lis.indices) {
+            if (lis[j] == -1) {
+                lis[j] = num
+                return
+            } else if (lis[j] == num) {
+                return
+            } else if (lis[j] > num) {
+                lis[j] = num
+                return
+            }
+        }
+    }
+
+    fun setting() {
+        lis.forEachIndexed { index, i ->
+            if (i == -1) {
+                result = index
+                return
+            }
+        }
+    }
+
+}
+
