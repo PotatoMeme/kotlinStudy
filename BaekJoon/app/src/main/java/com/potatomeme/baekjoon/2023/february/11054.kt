@@ -65,7 +65,7 @@ class Solution11054Try1(val n: Int, val arr: IntArray) {
 }//time out
 
 //try2
-class Solution11054(n: Int, arr: IntArray) {
+class Solution11054Try2(n: Int, arr: IntArray) {
     var dp = Array(2) { IntArray(n) { 1 } }
     var max = 0
 
@@ -88,4 +88,53 @@ class Solution11054(n: Int, arr: IntArray) {
             max = max.coerceAtLeast(dp[0][it] + dp[1][it] - 1)
         }
     }
+}
+
+//try3 to lis O(NlogN)
+class Solution11054(n: Int, arr: IntArray) {
+    val dp = Array(2) { IntArray(n) }
+    var lis = Array(2) { IntArray(n) { -1 } }
+    var max = 0
+
+    init {
+        for (i in arr.indices) {
+            dp[0][i] = LisLeft(arr[i])
+            dp[1][n - i - 1] = LisRight(arr[n - i - 1])
+        }
+        for (i in arr.indices) {
+            max = max.coerceAtLeast(dp[0][i] + dp[1][i] + 1)
+        }
+    }
+
+
+    fun LisLeft(num: Int): Int {
+        lis[0].forEachIndexed { index, j ->
+            if (j == -1) {
+                lis[0][index] = num
+                return index
+            } else if (j == num) {
+                return index
+            } else if (j > num) {
+                lis[0][index] = num
+                return index
+            }
+        }
+        return 0
+    }
+
+    private fun LisRight(num: Int): Int {
+        lis[1].forEachIndexed { index, j ->
+            if (j == -1) {
+                lis[1][index] = num
+                return index
+            } else if (j == num) {
+                return index
+            } else if (j > num) {
+                lis[1][index] = num
+                return index
+            }
+        }
+        return 0
+    }
+
 }
