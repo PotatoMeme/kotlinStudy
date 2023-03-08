@@ -24,5 +24,5 @@ package com.potatomeme.programmers.codingtest.years23.march.level0
 
 class Solution120818() {
     fun solution(price: Int) =
-        if (price >= 500000) price / 5 * 4 else if (price >= 300000) price / 10 * 9 else if (price >= 100000) price / 20 * 19 else price
+        if (price >= 500000) price / 5 * 4 else if (price >= 300000) price / 10 * 9 else if (price >= 100000) price * 19 / 20  else price
 }
