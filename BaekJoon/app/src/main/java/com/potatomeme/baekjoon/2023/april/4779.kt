@@ -1,7 +1,5 @@
 package com.potatomeme.baekjoon.`2023`.april
 
-import java.util.Scanner
-
 
 //https://www.acmicpc.net/problem/4779
 
@@ -52,28 +50,7 @@ import java.util.Scanner
 //- -   - -
 
 //try1
-//fun main() = with(System.`in`.bufferedReader()) {
-//    val arr = Array(13){""}
-//    arr[0] = "-"
-//    fun solve(idx:Int): String{
-//        if (arr[idx].isEmpty()){
-//            arr[idx] = buildString {
-//                val str = solve(idx-1)
-//                append(str)
-//                repeat(str.length){append(" ")}
-//                append(str)
-//            }
-//        }
-//        return arr[idx]
-//    }
-//    while (true){
-//        print(solve(readLine().toInt()))
-//    }
-//}
-
-//try2
-fun main() {
-    val sc = Scanner(System.`in`)
+fun main() = with(System.`in`.bufferedReader()) {
     val arr = Array(13) { "" }
     arr[0] = "-"
     fun solve(idx: Int): String {
@@ -87,7 +64,30 @@ fun main() {
         }
         return arr[idx]
     }
-    while (sc.hasNextInt()) {
-        println(solve(sc.nextInt()))
+
+    var str: String?
+    while (readLine().also { str = it } != null) {
+        str?.let { println(solve(it.toInt())) }
     }
 }
+
+//try2
+//fun main() {
+//    val sc = Scanner(System.`in`)
+//    val arr = Array(13) { "" }
+//    arr[0] = "-"
+//    fun solve(idx: Int): String {
+//        if (arr[idx].isEmpty()) {
+//            arr[idx] = buildString {
+//                val str = solve(idx - 1)
+//                append(str)
+//                repeat(str.length) { append(" ") }
+//                append(str)
+//            }
+//        }
+//        return arr[idx]
+//    }
+//    while (sc.hasNextInt()) {
+//        println(solve(sc.nextInt()))
+//    }
+//}
