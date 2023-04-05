@@ -27,3 +27,4 @@ fun solution(quiz: Array<String>): Array<String> {
     }
     return answer
 }
+
