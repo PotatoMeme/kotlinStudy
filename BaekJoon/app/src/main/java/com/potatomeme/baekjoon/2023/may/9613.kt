@@ -37,7 +37,7 @@ fun main() = with(System.`in`.bufferedReader()) {
         val st =StringTokenizer(readLine())
         val n = st.nextToken().toInt()
         val arr =IntArray(n){ st.nextToken().toInt() }
-        var sum = 0
+        var sum = 0L
         for (i in 0 until n -1){
             for (j in i+1 until n){
                 sum += gcd(arr[i],arr[j])
