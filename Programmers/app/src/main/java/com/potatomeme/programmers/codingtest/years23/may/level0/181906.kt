@@ -33,7 +33,7 @@ package com.potatomeme.programmers.codingtest.years23.may.level0
 class Solution181906() {
     fun solution(my_string: String, is_prefix: String): Int {
         if (my_string.length < is_prefix.length) return 0
-        for (i in my_string.indices) {
+        for (i in is_prefix.indices) {
             if (my_string[i] != is_prefix[i]) return 0
         }
         return 1
