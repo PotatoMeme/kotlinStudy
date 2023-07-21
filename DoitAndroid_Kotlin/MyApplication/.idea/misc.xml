@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/main/DoitAndroid_Kotlin/MyApplication/ch10_notification/src/main/res/layout/activity_main.xml" value="0.5" />
+        <entry key="..\:/Users/main/DoitAndroid_Kotlin/MyApplication/ch11_jetpack/src/main/res/layout/activity_main.xml" value="0.24048913043478262" />
+        <entry key="..\:/Users/main/DoitAndroid_Kotlin/MyApplication/ch11_jetpack/src/main/res/layout/fragment_one.xml" value="0.2786458333333333" />
+        <entry key="..\:/Users/main/DoitAndroid_Kotlin/MyApplication/ch11_jetpack/src/main/res/menu/menu_main.xml" value="0.2786458333333333" />
+        <entry key="..\:/Users/main/DoitAndroid_Kotlin/MyApplication/ch12_material/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.22685185185185186" />
+        <entry key="..\:/Users/main/DoitAndroid_Kotlin/MyApplication/ch12_material/src/main/res/layout/navigation_header.xml" value="0.17603850050658562" />
+        <entry key="..\:/Users/main/DoitAndroid_Kotlin/MyApplication/ch12_material/src/main/res/menu/menu_navigation.xml" value="0.2462962962962963" />
+        <entry key="..\:/Users/main/DoitAndroid_Kotlin/MyApplication/ch13_activity/src/main/res/drawable/ic_launcher_foreground.xml" value="0.21944444444444444" />
+        <entry key="..\:/Users/main/DoitAndroid_Kotlin/MyApplication/ch13_activity/src/main/res/layout/item_recyclerview.xml" value="0.17603850050658562" />
+        <entry key="..\:/Users/main/DoitAndroid_Kotlin/MyApplication/ch8_event/src/main/res/layout/activity_main.xml" value="0.2838541666666667" />
+        <entry key="..\:/Users/main/DoitAndroid_Kotlin/MyApplication/ch9_resource/src/main/res/drawable/round_button.xml" value="0.2984375" />
+        <entry key="..\:/Users/main/DoitAndroid_Kotlin/MyApplication/ch9_resource/src/main/res/layout-ko-rKR/activ.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/main/DoitAndroid_Kotlin/MyApplication/ch9_resource/src/main/res/layout-ko-rKR/activity_main.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/main/DoitAndroid_Kotlin/MyApplication/ch9_resource/src/main/res/layout-land/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/main/DoitAndroid_Kotlin/MyApplication/ch9_resource/src/main/res/layout/activity_main.xml" value="0.22777777777777777" />
+        <entry key="..\:/gitHub/DoitAndroid_Kotlin/MyApplication/ch6_view/src/main/res/layout/activity_main.xml" value="0.2957427536231884" />
+        <entry key="..\:/gitHub/DoitAndroid_Kotlin/MyApplication/ch7_layout/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
+        <entry key="..\:/gitHub/DoitAndroid_Kotlin/MyApplication/ch8_event/src/main/res/drawable/round_button.xml" value="0.29907407407407405" />
+        <entry key="..\:/gitHub/DoitAndroid_Kotlin/MyApplication/ch8_event/src/main/res/layout/activity_main.xml" value="0.2" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
