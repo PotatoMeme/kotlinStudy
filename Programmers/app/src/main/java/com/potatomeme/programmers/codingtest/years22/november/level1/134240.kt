@@ -1,5 +1,7 @@
 package com.potatomeme.programmers.codingtest.years22.november.level1
 
+import java.util.Stack
+
 //푸드 파이트 대회
 //문제 설명
 //수웅이는 매달 주어진 음식을 빨리 먹는 푸드 파이트 대회를 개최합니다. 이 대회에서 선수들은 1대 1로 대결하며, 매 대결마다 음식의 종류와 양이 바뀝니다. 대결은 준비된 음식들을 일렬로 배치한 뒤, 한 선수는 제일 왼쪽에 있는 음식부터 오른쪽으로, 다른 선수는 제일 오른쪽에 있는 음식부터 왼쪽으로 순서대로 먹는 방식으로 진행됩니다. 중앙에는 물을 배치하고, 물을 먼저 먹는 선수가 승리하게 됩니다.
@@ -27,7 +29,7 @@ class Solution134240 {
         "$index".repeat(i / 2)
     }.reduce { acc, s -> "$acc$s" }.let { "${it}0${it.reversed()}" }
 
-    fun solution_improve(food: IntArray): String{
+    fun solutionImprove(food: IntArray): String{
         val sb = StringBuilder()
         food.forEachIndexed{ index, i ->
             repeat(i/2) {sb.append(index)}
@@ -35,6 +37,22 @@ class Solution134240 {
         val reversed = sb.reversed()
         sb.append(0)
         sb.append(reversed)
+        return sb.toString()
+    }
+
+    fun solutionImproveWithStack(food: IntArray): String{
+        val sb = StringBuilder()
+        val stack = Stack<Int>()
+        food.forEachIndexed{ index, i ->
+            repeat(i/2) {
+                stack.add(index)
+                sb.append(index)
+            }
+        }
+        sb.append(0)
+        while (stack.isNotEmpty()){
+            sb.append(stack.pop())
+        }
         return sb.toString()
     }
 }
