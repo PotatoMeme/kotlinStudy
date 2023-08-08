@@ -33,27 +33,26 @@ package com.example.myapplication.level1
 
 
 class Solution12977 {
-    private val primes = Array(2998) { true }
+    private val primes = BooleanArray(2998)
 
     init {
         for (i in 2..55) {
-            if (primes[i]) {
-                for (j in i * 2..2997 step i) {
-                    primes[j] = false
-                }
+            if (primes[i]) continue
+            for (j in i + i..2997 step i) {
+                primes[j] = true
             }
         }
     }
 
     fun solution(nums: IntArray): Int {
-        val result = mutableListOf<Int>()
+        var count = 0
         for (i in 0 until nums.size - 2) {
             for (j in i + 1 until nums.size - 1) {
-                for (k in j + 2 until nums.size) {
-                    result.add(nums[i] + nums[j] + nums[k])
+                for (k in j + 1 until nums.size) {
+                    if (!primes[nums[i] + nums[j] + nums[k]]) count++
                 }
             }
         }
-        return result.count { primes[it] }
+        return count
     }
 }
