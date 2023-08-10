@@ -34,13 +34,23 @@ class Solution12945 {
     }// 시간 초과
 
     fun mySolution2(n: Int): Int {
-        var list = ArrayList<Int>()
+        val list = ArrayList<Int>()
         list.add(0)
         list.add(1)
         for (i in 2..n) {
-            list.add((list.get(i - 1) + list.get(i - 2)) % 1234567)
+            list.add((list[i - 1] + list[i - 2]) % 1234567)
         }
-        return list.get(n)
+        return list[n]
+    }
+
+    fun mySolution3(n: Int): Int {
+        val arr = IntArray(n+1)
+        arr[0] = 0
+        arr[1] = 1
+        for (i in 2 .. n) {
+            arr[i] = (arr[i-1] + arr[i-2]) % 1234567
+        }
+        return arr[n]
     }
 
 
