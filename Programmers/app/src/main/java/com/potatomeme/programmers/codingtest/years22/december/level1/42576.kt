@@ -33,7 +33,7 @@ class Solution42576 {
         participant: Array<String>, completion: Array<String>,
     ): String {
         val sorted_participant = participant.sorted()
-        val sorted_completion = participant.sorted()
+        val sorted_completion = completion.sorted()
         for (i in sorted_completion.indices) {
             if (sorted_participant[i] != sorted_completion[i]) return sorted_participant[i]
         }
