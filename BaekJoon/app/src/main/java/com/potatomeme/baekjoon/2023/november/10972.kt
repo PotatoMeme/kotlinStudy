@@ -48,39 +48,36 @@ fun main() {
         val st = StringTokenizer(readLine())
         val arr = IntArray(n){st.nextToken().toInt()}
         val checkedArr = BooleanArray(n+1)
-        var changed = false
-        fun dfs(depth:Int){
+        fun dfsSecond(depth:Int){
             if (depth == n ){
-                if(changed){
-                    print(arr.joinToString(" "))
-                    exitProcess(0)
-                }else{
-                    changed = true
-                }
+                print(arr.joinToString(" "))
+                exitProcess(0)
             }
-            if (changed){
-                for (i in 1 .. n){
-                    if (checkedArr[i]){
-                        checkedArr[i] = false
-                        arr[depth] = i
-                        dfs(depth+1)
-                        checkedArr[i] = true
-                    }
-                }
-            }else{
-                dfs(depth+1)
-                checkedArr[arr[depth]] = true
-                for(i in arr[depth]+1 .. n){
-                    if (checkedArr[i]){
-                        checkedArr[i] = false
-                        arr[depth] = i
-                        dfs(depth+1)
-                        checkedArr[i] = true
-                    }
+            for (i in 1 .. n){
+                if (checkedArr[i]){
+                    checkedArr[i] = false
+                    arr[depth] = i
+                    dfsSecond(depth+1)
+                    checkedArr[i] = true
                 }
             }
         }
-        dfs(0)
+        fun dfsFirst(depth:Int){
+            if (depth == n ){
+                return
+            }
+            dfsFirst(depth+1)
+            checkedArr[arr[depth]] = true
+            for(i in arr[depth]+1 .. n){
+                if (checkedArr[i]){
+                    checkedArr[i] = false
+                    arr[depth] = i
+                    dfsSecond(depth+1)
+                    checkedArr[i] = true
+                }
+            }
+        }
+        dfsFirst(0)
         print(-1)
     }
 }
